@@ -23,7 +23,11 @@ export default eventHandler(async (event) => {
         console.error('Failed write access log:', error)
       }
       const target = redirectWithQuery ? withQuery(link.url, getQuery(event)) : link.url
-      return sendRedirect(event, target, +useRuntimeConfig(event).redirectStatusCode)
+      if (link.forward) {
+        return sendProxy(event, target)
+      } else {
+        return sendRedirect(event, target, +useRuntimeConfig(event).redirectStatusCode)
+      }
     }
   }
 })

@@ -1,5 +1,5 @@
 <script setup>
-import { CalendarPlus2, Copy, CopyCheck, Eraser, Hourglass, Link as LinkIcon, QrCode, SquareChevronDown, SquarePen } from 'lucide-vue-next'
+import { CalendarPlus2, Copy, CopyCheck, Eraser, Hourglass, Link as LinkIcon, QrCode, SquareChevronDown, SquarePen, Forward } from 'lucide-vue-next'
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
 import { parseURL } from 'ufo'
@@ -86,6 +86,8 @@ function updateLink(link, type) {
             </Tooltip>
           </TooltipProvider>
         </div>
+
+        <Forward v-if="link.forward" class="w-5 h-5" />
 
         <a
           :href="link.url"

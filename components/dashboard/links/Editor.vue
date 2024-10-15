@@ -66,6 +66,7 @@ const form = useForm({
     url: link.value.url,
     optional: {
       comment: link.value.comment,
+      forward: link.value.forward
     },
   },
   validateOnMount: isEdit,

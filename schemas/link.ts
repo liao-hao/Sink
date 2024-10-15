@@ -12,6 +12,7 @@ export const LinkSchema = z.object({
   url: z.string().trim().url().max(2048),
   slug: z.string().trim().max(2048).regex(new RegExp(slugRegex)).default(nanoid()),
   comment: z.string().trim().max(2048).optional(),
+  forward: z.boolean().optional(),
   createdAt: z.number().int().safe().default(() => Math.floor(Date.now() / 1000)),
   updatedAt: z.number().int().safe().default(() => Math.floor(Date.now() / 1000)),
   expiration: z.number().int().safe().refine(expiration => expiration > Math.floor(Date.now() / 1000), {
